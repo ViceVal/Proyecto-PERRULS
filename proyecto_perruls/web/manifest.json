@@ -1,6 +1,6 @@
 {
-    "name": "proyecto_pizarra",
-    "short_name": "proyecto_pizarra",
+    "name": "perrulsapp",
+    "short_name": "perrulsapp",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

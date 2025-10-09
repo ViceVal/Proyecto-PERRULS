@@ -1,55 +1,37 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_test/flutter_test.dart';
+import 'package:perruls_app/main.dart';
 void main() {
-  runApp(const MyApp());
-}
+  testWidgets('PerrulsApp muestra pantalla principal correctamente', (WidgetTester tester) async {
+    await tester.pumpWidget(PerrulsApp());
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+    expect(find.text('Mascotas Perruls'), findsOneWidget);
+    
+    expect(find.byType(TextField), findsOneWidget);
+    await tester.pumpAndSettle();
+    
+    expect(find.byType(ListTile), findsAtLeast(1));
+  });
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Ejemplo Flutter',
-      debugShowCheckedModeBanner: false,
-      home: const CounterPage(),
-    );
-  }
-}
+  testWidgets('Búsqueda de mascotas funciona correctamente', (WidgetTester tester) async {
+    await tester.pumpWidget(PerrulsApp());
+    
+    await tester.pumpAndSettle();
+    await tester.enterText(find.byType(TextField), 'Charlie');
+    await tester.pumpAndSettle();
 
-class CounterPage extends StatefulWidget {
-  const CounterPage({super.key});
+    expect(find.byType(ListTile), findsOneWidget);
+    expect(find.text('Charlie'), findsOneWidget);
+  });
 
-  @override
-  State<CounterPage> createState() => _CounterPageState();
-}
-
-class _CounterPageState extends State<CounterPage> {
-  int counter = 0;
-
-  void increment() {
-    setState(() {
-      counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Contador Simple"),
-        backgroundColor: Colors.teal,
-      ),
-      body: Center(
-        child: Text(
-          'Has presionado $counter veces',
-          style: const TextStyle(fontSize: 24),
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: increment,
-        child: const Icon(Icons.add),
-      ),
-    );
-  }
+  testWidgets('Tap en mascota navega a pantalla de detalle', (WidgetTester tester) async {
+    await tester.pumpWidget(PerrulsApp());
+    
+    await tester.pumpAndSettle();
+    
+    await tester.tap(find.byType(ListTile).first);
+    await tester.pumpAndSettle();
+    
+    expect(find.byType(AppBar), findsOneWidget);
+  });
 }
