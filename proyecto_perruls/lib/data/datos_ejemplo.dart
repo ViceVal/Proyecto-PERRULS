@@ -8,7 +8,9 @@ import '../models/derivacion.dart';
 class DatosEjemplo {
   static List<Sucursal> sucursales = [
     Sucursal(idCampus: "C1", nombre: "Campus Isabel Bongard"),
-    Sucursal(idCampus: "C2", nombre: "Campus Santiago"),
+    Sucursal(idCampus: "C2", nombre: "Campus Andres Bello"),
+    Sucursal(idCampus: "C3", nombre: "Campus Gabriela Mistral"),
+    Sucursal(idCampus: "C4", nombre: "Campus Ignacio Domeyko"),
   ];
 
   static List<Mascota> mascotas = [
@@ -22,7 +24,8 @@ class DatosEjemplo {
       peso: "25 kg",
       estado: "Disponible",
       idCampus: "C1",
-      descripcion: "Observaciones: Necesita atención por artrosis y otitis crónica, requiere tratamientos regulares y revisiones médicas periódicas.",
+      descripcion:
+          "Observaciones: Necesita atención por artrosis y otitis crónica, requiere tratamientos regulares y revisiones médicas periódicas.",
       enfermedades: ["Artrosis", "Otitis crónica"],
       vacunas: [
         Vacuna(
@@ -54,13 +57,26 @@ class DatosEjemplo {
       peso: "4 kg",
       estado: "Adoptado",
       idCampus: "C1",
-      descripcion: "Pitufina es tranquila, disfruta del contacto humano y sigue las rutinas de vacunación establecidas por el personal Perruls.",
+      descripcion:
+          "Pitufina es tranquila, disfruta del contacto humano y sigue las rutinas de vacunación establecidas por el personal Perruls.",
       vacunas: [
         Vacuna(
             nombre: "Triple Felina",
             fechaAplicacion: DateTime.parse("2023-03-10"),
             proximaFecha: DateTime.parse("2024-03-10")),
       ],
+    ),
+    Mascota(
+      chipId: "003",
+      nombre: "Max",
+      imagenUrl: "https://images.unsplash.com/photo-1552053831-71594a27632d?w=400",
+      especie: "Perro",
+      raza: "Golden Retriever",
+      edad: "3 años",
+      peso: "30 kg",
+      estado: "Disponible",
+      idCampus: "C2",
+      descripcion: "Max es un perro muy juguetón y amigable. Le encanta correr y jugar con niños.",
     ),
   ];
 }
